@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 interface ICRUDService extends IService
 {
+    function getallModels(): bool|Collection;
+
     public function createModel(array $data): false|Model;
 
     public function updateModel(string $id, array $data): bool;

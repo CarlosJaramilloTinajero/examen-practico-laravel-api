@@ -18,6 +18,17 @@ class CompanyService implements ICRUDService, IFilterService
         $this->companyRepository = $companyRepository;
     }
 
+    function getallModels(): bool|Collection
+    {
+        try {
+            return $this->companyRepository->getAllModels()->get();
+        } catch (\Exception $e) {
+            report($e);
+            return false;
+        }
+    }
+
+
     public function createModel(array $data): false|Company
     {
         try {
