@@ -44,7 +44,11 @@ class CompanyController extends Controller
             ]);
 
             if ($validator->fails()) {
-                return $this->helpersController->responseWithFailApiMsg('Bad request', 400);
+                if ($validator->fails()) {
+                    return $this->helpersController->responseWithFailApiMsg('Bad request | ' . str_replace('.', '', implode(', ', collect($validator->errors()->toArray())->map(function ($value) {
+                        return implode(', ', $value);
+                    })->toArray())) . '.', 400);
+                }
             }
 
             if (!$model = $this->companyService->createModel([
@@ -70,7 +74,11 @@ class CompanyController extends Controller
             ]);
 
             if ($validator->fails()) {
-                return $this->helpersController->responseWithFailApiMsg('Bad request', 400);
+                if ($validator->fails()) {
+                    return $this->helpersController->responseWithFailApiMsg('Bad request | ' . str_replace('.', '', implode(', ', collect($validator->errors()->toArray())->map(function ($value) {
+                        return implode(', ', $value);
+                    })->toArray())) . '.', 400);
+                }
             }
 
             if (!$this->companyService->updateModel($id, [

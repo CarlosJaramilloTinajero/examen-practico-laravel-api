@@ -21,7 +21,9 @@ class TaskRepository implements ICRUDRepositoy, IFiltersRespository
 
     public function getModel(string $id): Task|null
     {
-        return Task::find($id);
+        return Task::with(['company' => function ($query) {
+            $query->select('id', 'name', 'sector');
+        }])->find($id);
     }
 
     public function updateModel(string $id, array $data): bool

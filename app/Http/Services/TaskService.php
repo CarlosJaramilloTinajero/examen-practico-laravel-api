@@ -38,7 +38,19 @@ class TaskService implements ICRUDService, IFilterService
             if ($user->tasks->count() > 5) return false;
 
             $data = array_merge($data, ['user' => $user->name]);
-            return $this->taskRepository->createModel($data);
+
+            if ($model = $this->taskRepository->createModel($data)) {
+                $model = $this->taskRepository->getModel($model->id);
+
+                // Quitamos los datos que no queremos que se muestren al crear la tarea
+                unset($model['user_id']);
+                unset($model['company_id']);
+                unset($model['start_at']);
+                unset($model['expired_at']);
+                unset($model['is_completed']);
+            }
+
+            return $model;
         } catch (\Exception $e) {
             report($e);
             return false;

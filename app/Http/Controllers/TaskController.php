@@ -42,17 +42,19 @@ class TaskController extends Controller
             $validator = Validator::make($request->all(), [
                 'name' => 'required|min:5',
                 'description' => 'required|min:20',
-                'user_id' => 'required|numeric',
-                'company_id' => 'required|numeric',
+                'user_id' => 'required|numeric|exists:users,id',
+                'company_id' => 'required|numeric|exists:companies,id',
             ]);
 
             if ($validator->fails()) {
-                return $this->helpersController->responseWithFailApiMsg('Bad request', 400);
+                return $this->helpersController->responseWithFailApiMsg('Bad request | ' . str_replace('.', '', implode(', ', collect($validator->errors()->toArray())->map(function ($value) {
+                    return implode(', ', $value);
+                })->toArray())) . '.', 400);
             }
 
             if (!$model = $this->taskService->createModel([
                 'name' => $request->name,
-                'descrition' => $request->descrition,
+                'description' => $request->description,
                 'user_id' => $request->user_id,
                 'company_id' => $request->company_id,
             ])) {
@@ -72,19 +74,21 @@ class TaskController extends Controller
             $validator = Validator::make($request->all(), [
                 'name' => 'required|min:5',
                 'description' => 'required|min:20',
-                'user_id' => 'required|numeric',
-                'company_id' => 'required|numeric',
+                'user_id' => 'required|numeric|exists:users,id',
+                'company_id' => 'required|numeric|exists:companies,id',
                 'start_at' => 'nullable|date',
                 'expired_at' => 'nullable|date'
             ]);
 
             if ($validator->fails()) {
-                return $this->helpersController->responseWithFailApiMsg('Bad request', 400);
+                return $this->helpersController->responseWithFailApiMsg('Bad request | ' . str_replace('.', '', implode(', ', collect($validator->errors()->toArray())->map(function ($value) {
+                    return implode(', ', $value);
+                })->toArray())) . '.', 400);
             }
 
             if (!$this->taskService->updateModel($id, [
                 'name' => $request->name,
-                'descrition' => $request->descrition,
+                'description' => $request->description,
                 'user_id' => $request->user_id,
                 'company_id' => $request->company_id,
                 'start_at' => $request->start_at ? $request->start_at : null,
