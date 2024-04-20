@@ -33,6 +33,10 @@ class TaskService implements ICRUDService, IFilterService
     {
         try {
             if (!$user = User::find($data['user_id'])) return false;
+
+            // Validamos que no haya mas de 5 tareas pendientes para el usuario
+            if ($user->tasks->count() > 5) return false;
+
             $data = array_merge($data, ['user' => $user->name]);
             return $this->taskRepository->createModel($data);
         } catch (\Exception $e) {
