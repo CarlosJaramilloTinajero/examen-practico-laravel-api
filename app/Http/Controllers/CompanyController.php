@@ -22,11 +22,13 @@ class CompanyController extends Controller
         try {
             $filters = $request->only(['search', 'page', 'perPage']);
 
-            if (!$companiesPaginated = $this->companyService->getModelsByFilters($filters)) {
+            if (!$companies = $this->companyService->getModelsByFilters($filters)) {
                 return $this->helpersController->responseWithFailApiMsg();
             }
 
-            return $this->helpersController->responseSuccessApi($companiesPaginated['companies_paginated']);
+            $dataCompanies = $companies['companies_paginated'] ?? $companies['companies'];
+
+            return $this->helpersController->responseSuccessApi($dataCompanies);
         } catch (\Exception $e) {
             report($e);
             return $this->helpersController->respondWithInternalServerError();

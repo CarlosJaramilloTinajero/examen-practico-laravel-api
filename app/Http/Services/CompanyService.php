@@ -66,9 +66,20 @@ class CompanyService implements ICRUDService, IFilterService
     public function getModelsByFilters(array $filters = []): bool|array
     {
         try {
+            $queryByFilters = $this->companyRepository->getModelsByFilters($filters);
+            $companiesPaginated = null;
+            $companies = null;
+
+            if (isset($filters['page']) && is_numeric($filters['page']) && $filters['page'] > 0) {
+                $companiesPaginated = $queryByFilters
+                    ->paginate(isset($filters['perPage']) && $filters['perPage'] > 0 ? $filters['perPage'] : 10);
+            }
+
+            $companies = $queryByFilters->get();
+
             return [
-                'companies_paginated' => $this->companyRepository->getModelsByFilters($filters)
-                    ->paginate(isset($filters['perPage']) && $filters['perPage'] > 0 ? $filters['perPage'] : 10)
+                'companies_paginated' => $companiesPaginated,
+                'companies' => $companies
             ];
         } catch (\Exception $e) {
             report($e);
