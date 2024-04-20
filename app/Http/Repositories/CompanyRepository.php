@@ -33,7 +33,7 @@ class CompanyRepository implements ICRUDRepositoy, IFiltersRespository
     {
         if (!$query) {
             $query = $this->getAllModels(['tasks' => function ($query) {
-                $query->select('id', 'name', 'description', 'user', 'start_at', 'expired_at');
+                $query->select('id', 'name', 'description', 'user', 'start_at', 'expired_at', 'is_completed', 'company_id');
             }]);
         }
 

@@ -11,9 +11,8 @@ class Company extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'sector'];
-
-    protected $visible = ['id', 'name', 'sector'];
-
+    protected $hidden = ['created_at', 'updated_at'];
+    
     function tasks(): HasMany
     {
         return $this->hasMany(Task::class, 'company_id', 'id');
