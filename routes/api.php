@@ -20,7 +20,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
+// Companies
 Route::controller(CompanyController::class)->prefix('companies')->group(function () {
+    Route::get('', 'index');
+    Route::post('create', 'store');
+    Route::put('update/{id}', 'update');
+    Route::delete('delete/{id}', 'destroy');
+});
+
+// Tasks
+Route::controller(CompanyController::class)->prefix('tasks')->group(function () {
     Route::get('', 'index');
     Route::post('create', 'store');
     Route::put('update/{id}', 'update');
