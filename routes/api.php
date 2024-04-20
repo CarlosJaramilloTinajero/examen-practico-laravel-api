@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,7 +30,7 @@ Route::controller(CompanyController::class)->prefix('companies')->group(function
 });
 
 // Tasks
-Route::controller(CompanyController::class)->prefix('tasks')->group(function () {
+Route::controller(TaskController::class)->prefix('tasks')->group(function () {
     Route::get('', 'index');
     Route::post('create', 'store');
     Route::put('update/{id}', 'update');
