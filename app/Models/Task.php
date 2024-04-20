@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Task extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'description', 'user_id', 'company_id'];
+    protected $fillable = ['name', 'description', 'user_id', 'company_id', 'user', 'start_at', 'expired_at'];
+    protected $visible = ['name', 'description', 'user_id', 'company_id', 'user', 'start_at', 'expired_at'];
 
     function company(): BelongsTo
     {

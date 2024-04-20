@@ -12,6 +12,8 @@ class Company extends Model
 
     protected $fillable = ['name', 'sector'];
 
+    protected $visible = ['id', 'name', 'sector'];
+
     function tasks(): HasMany
     {
         return $this->hasMany(Task::class, 'company_id', 'id');
