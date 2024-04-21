@@ -70,7 +70,7 @@ class CompanyController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
-                'sector' => 'required|in:tecnologia, salud, educacion'
+                'sector' => 'required|in:tecnologia,salud,educacion'
             ]);
 
             if ($validator->fails()) {
