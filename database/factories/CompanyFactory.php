@@ -18,7 +18,7 @@ class CompanyFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'sector' => fake()->randomElement(['tecnologia, salud, educacion'])
+            'sector' => fake()->randomElement(['tecnologia', 'salud', 'educacion'])
         ];
     }
 }

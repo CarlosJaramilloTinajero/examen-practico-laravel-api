@@ -23,7 +23,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('tasks', function (Blueprint $table) {
-            //
+            $table->dropIfExists('start_at');
+            $table->dropIfExists('expired_at');
         });
     }
 };
