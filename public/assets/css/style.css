@@ -1,0 +1,52 @@
+body {
+    background-color: rgba(0, 0, 0, .1);
+}
+
+/* Navbar */
+.navbar {
+    box-shadow: 0 0 15px rgba(0, 0, 0, .3) !important;
+}
+
+/* container view */
+.container-view {
+    padding: 15px 5px;
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    background-color: rgba(255, 255, 255, 0.9);
+    overflow-x: scroll;
+    width: 96%;
+    max-width: 1300px;
+    margin: 100px auto;
+}
+
+.container-view .container-view-content {
+    min-width: 400px;
+}
+
+.container-view .container-view-header {
+    margin: 10px auto;
+    margin-bottom: 40px;
+    height: 20px;
+    width: 98%;
+    position: relative;
+}
+
+.container-view-header .title-view {
+    position: absolute;
+    left: 0;
+    top: 7px;
+}
+
+.container-view-header .title-view p {
+    color: rgba(0, 0, 0, 0.8);
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 17px;
+}
+
+.container-view-header .button-actions {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
