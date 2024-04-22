@@ -1,10 +1,12 @@
 body {
-    background-color: rgba(0, 0, 0, .1);
+    background-color: #20dad710;
+    overflow-x: hidden !important;
 }
 
 /* Navbar */
 .navbar {
     box-shadow: 0 0 15px rgba(0, 0, 0, .3) !important;
+    background-color: #1a5987 !important;
 }
 
 /* container view */
@@ -13,14 +15,10 @@ body {
     border-radius: 3px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .3);
     background-color: rgba(255, 255, 255, 0.9);
-    overflow-x: scroll;
+    overflow-x: hidden;
     width: 96%;
     max-width: 1300px;
     margin: 100px auto;
-}
-
-.container-view .container-view-content {
-    min-width: 400px;
 }
 
 .container-view .container-view-header {
@@ -49,4 +47,69 @@ body {
     position: absolute;
     right: 0;
     top: 0;
+}
+
+/* Footer */
+footer {
+    width: 100vw;
+    /* background-color: white; */
+    background-color: #102543;
+    margin-bottom: 0;
+    box-shadow: 0 0 15px rgba(0, 0, 0, .2);
+    padding: 60px 10px;
+    padding-bottom: 40px;
+}
+
+footer .footer-container {
+    width: 100%;
+    padding: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    .footer-container .title-footer {
+        font-size: 12px !important;
+    }
+}
+
+.footer-container .title-footer {
+    margin-bottom: 0;
+    color: rgba(255, 255, 255, 0.95);
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 13px;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.footer-container .title-footer span {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.footer-container .tecnlogies-container {
+    margin-top: 20px;
+    justify-content: center;
+    display: flex;
+    grid-gap: 30px;
+}
+
+.footer-container .tecnlogies-container .tecnlogies .title {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 13px !important;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.footer-container .tecnlogies-container .tecnlogies .tecnology {
+    color: rgba(255, 255, 255, 0.75);
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 12px !important;
+    margin-bottom: 5px;
 }

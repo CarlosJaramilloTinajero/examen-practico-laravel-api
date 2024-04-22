@@ -1,5 +1,5 @@
 <header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+    <nav data-bs-theme="dark" class="navbar bg-dark navbar-expand-lg bg-body-tertiary fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ route('companies.index') }}">Inicio</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"

@@ -40,6 +40,8 @@
         </section>
     </div>
 
+    @include('layout.footer')
+
     @stack('js')
     @livewireScripts
 </body>
